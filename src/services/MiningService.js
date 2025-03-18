@@ -1,6 +1,6 @@
-import App from "@/App.vue"
+// import App from "@/App.vue"
 import { AppState } from "@/AppState.js"
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 class MiningService{
   mine(){
@@ -12,7 +12,18 @@ class MiningService{
       clickSum += (upgrade.quantity * upgrade.multiplier)
     })
     cheese.value.amount += clickSum
-    console.log(cheese);
+    // console.log(cheese);
+  }
+  autoMine(){
+    let cheese = ref(AppState.cheese)
+    const upgrades = ref(AppState.upgrades)
+    const autoGearArray = upgrades.value.filter(upgrade => upgrade.category == 'auto')
+    let autoSum = 0
+    autoGearArray.forEach(upgrade => {
+      autoSum += (upgrade.quantity * upgrade.multiplier)
+    })
+    cheese.value.amount += autoSum
+    setInterval(this.autoMine, 3000)
   }
 
   buyUpgrade(upgradeObj){

@@ -4,30 +4,27 @@ import { computed, ref } from 'vue'
 
 class MiningService{
   mine(){
-    const cheese = computed(() => AppState.cheese)
+    let cheese = ref(AppState.cheese)
     const upgrades = ref(AppState.upgrades)
     const clickGearArray = upgrades.value.filter(upgrade => upgrade.category == 'click')
     let clickSum = 0 
     clickGearArray.forEach(upgrade => {
       clickSum += (upgrade.quantity * upgrade.multiplier)
     })
-    console.log(clickSum);
-    
-    // console.log('⛏️ GREAT success!');
-    // const clickMineGear = AppState.upgrades.filter(gear => gear.category == 'click')
-    // const clickMineGearSum = clickMineGear.forEach()
-    // cheese 
+    cheese.value.amount += clickSum
+    console.log(cheese);
   }
 
   buyUpgrade(upgradeObj){
     // console.log(upgrade.name);
-    
+    let cheese = ref(AppState.cheese)
     const upgradeToBuy = AppState.upgrades.find(upgrade => upgrade.id == upgradeObj.id)
-    if (AppState.cheese < upgradeToBuy.price) {
-      return console.log(`Come back when you get some money, buddy!`);
+    if (cheese.value.amount < upgradeToBuy.price) {
+      return alert(`Come back when you get some money, buddy!`);
     }
-    AppState.cheese -= upgradeToBuy.price
+    cheese.value.amount -= upgradeToBuy.price
     upgradeToBuy.quantity++
+    upgradeToBuy.price = (upgradeToBuy.quantity * upgradeToBuy.priceIncrease) 
     
     console.log(upgradeToBuy);
     

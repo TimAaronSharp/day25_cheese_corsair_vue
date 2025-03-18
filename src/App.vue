@@ -5,7 +5,7 @@ import { AppState } from './AppState.js'
 import { miningService } from './services/MiningService.js'
 
 
-const cheese = computed(() => AppState.cheese)
+const cheese = computed(() => AppState.cheese.amount)
 const upgrades = computed(() => AppState.upgrades)
 // const autoUpgrades = computed(() => AppState.autoUpgrades)
 function mine() {
@@ -39,7 +39,7 @@ function buyUpgrade(upgrade) {
         <div class="p-0" v-for="upgrade in upgrades" :key="upgrade.id">
           <button class="ms-1 px-1" @click="buyUpgrade(upgrade)" type="button">+{{ upgrade.multiplier }} - {{
             upgrade.price
-          }}</button>
+            }}</button>
         </div>
         <!-- <div class="px-1" v-for="upgrade in autoUpgrades" :key="upgrade.id">
           <button @click="buyUpgrade(upgrade)" type="button">+{{ upgrade.multiplier }} - {{ upgrade.price }}</button>

@@ -37,7 +37,7 @@ class MiningService{
     upgradeToBuy.quantity++
     upgradeToBuy.price = (upgradeToBuy.quantity * upgradeToBuy.priceIncrease) 
     
-    console.log(upgradeToBuy);
+    // console.log(upgradeToBuy);
     
   }
   

@@ -17,9 +17,10 @@ export const AppState = reactive({
     price: 50,
     quantity: 1,
     multiplier: 500,
-    icon:'<span class="mdi mdi-knife"></span>',
+    icon:'"mdi mdi-knife"',
     priceIncrease:50,
-    category: 'click'
+    category: 'click',
+    power: 500
   }),
   new Upgrade({
     id: 2,
@@ -27,9 +28,10 @@ export const AppState = reactive({
     price: 250,
     quantity: 0,
     multiplier: 5,
-    icon: '<span class="mdi mdi-pickaxe"></span>',
+    icon: '"mdi mdi-pickaxe"',
     priceIncrease: 250,
-    category: 'click'
+    category: 'click',
+    power: 0
   }),
     new Upgrade({
       id: 3,
@@ -37,9 +39,10 @@ export const AppState = reactive({
       price: 250,
       quantity: 0,
       multiplier: 1,
-      icon: '<span class="mdi mdi-robot"></span>',
+      icon: '"mdi mdi-robot"',
       priceIncrease: 250,
-      category: 'auto'
+      category: 'auto',
+      power: 0
     }),
     new Upgrade({
       id: 4,
@@ -47,9 +50,10 @@ export const AppState = reactive({
       price: 1000,
       quantity: 0,
       multiplier: 5,
-      icon: '<span class="mdi mdi-factory"></span>',
+      icon: '"mdi mdi-factory"',
       priceIncrease: 1000,
-      category: 'auto'
+      category: 'auto',
+      power: 0
     })
   ]
 })

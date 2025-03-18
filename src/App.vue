@@ -5,11 +5,30 @@ import { AppState } from './AppState.js'
 import { miningService } from './services/MiningService.js'
 
 
+// let totalPower = 0
 const cheese = computed(() => AppState.cheese.amount)
 const upgrades = computed(() => AppState.upgrades)
+// const clickPower = computed(() => {
+//   let powerSum = AppState.upgrades.find(upgrade => upgrade.category == 'click')
+//   for (let i = 0; i < powerSum.length; i++) {
+//     totalPower += powerSum[i].power;
+//   }
+//   return totalPower
+// })
+// let power = AppState.upgrades.find(upgrade => upgrade.category == 'click')
+// console.log(power.value);
+
+// for (let i = 0; i < power.length; i++) {
+//   totalPower += power[i].quantity * power[i].multiplier;
+// }
+// // power.forEach(upgrade => {
+// //   totalPower += upgrade.quantity * upgrade.multiplier
+// // })
+// return totalPower
 // const autoUpgrades = computed(() => AppState.autoUpgrades)
 function mine() {
   miningService.mine()
+  // console.log(clickPower);
 }
 function buyUpgrade(upgrade) {
   miningService.buyUpgrade(upgrade)
@@ -17,6 +36,7 @@ function buyUpgrade(upgrade) {
 
 onMounted(() => {
   miningService.autoMine()
+
 })
 </script>
 
@@ -28,9 +48,10 @@ onMounted(() => {
       <div class="col-md-1 text-center">
         <div>
           <p>Cheese: {{ cheese }}</p>
+          <!-- <p>Click Power: {{ clickPower }}</p> -->
         </div>
       </div>
-      <div class="col-md-11 text-center">
+      <div class="col-md-5 text-center">
         <img src="./assets/img/cheese-moon.png" alt="Cheese moon" @click="mine()">
       </div>
     </div>
